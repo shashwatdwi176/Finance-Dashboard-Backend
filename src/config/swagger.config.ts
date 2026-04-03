@@ -15,10 +15,10 @@ export const swaggerConfig = {
         },
         servers: [
             {
-                url: env.NODE_ENV === 'production'
+                url: process.env.RENDER
                     ? 'https://finance-dashboard-backend-g732.onrender.com'
                     : `http://localhost:${env.PORT}`,
-                description: env.NODE_ENV === 'production' ? 'Production server' : 'Development server',
+                description: process.env.RENDER ? 'Production server' : 'Development server',
             },
             {
                 url: `http://localhost:${env.PORT}`,
