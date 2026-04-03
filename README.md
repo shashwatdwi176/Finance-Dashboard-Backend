@@ -4,13 +4,13 @@ A Node.js backend for a financial management dashboard built with Express, TypeS
 
 ---
 
-## 🚀 Live Deployment
+##  Live Deployment
 - **API Base URL**: [https://finance-dashboard-backend-g732.onrender.com/](https://finance-dashboard-backend-g732.onrender.com/)
 - **Interactive API Docs**: [https://finance-dashboard-backend-g732.onrender.com/api-docs](https://finance-dashboard-backend-g732.onrender.com/api-docs)
 
 ---
 
-## 🏗️ Architecture Diagram
+##  Architecture Diagram
 The system follows a strict Layered/Clean Architecture pattern:
 
 ```mermaid
@@ -33,7 +33,7 @@ graph TD
 
 ---
 
-## 🧩 Project Structure
+##  Project Structure
 - **Routes**: API endpoint definitions and middleware orchestration.
 - **Controllers**: HTTP request/response handling.
 - **Services**: Business logic and application rules.
@@ -42,7 +42,7 @@ graph TD
 
 ---
 
-## 🔐 User Credentials (Demo)
+##  User Credentials (Demo)
 Use these credentials to test the different permission levels in the Swagger UI:
 
 | Role | Email | Password | Permissions |
@@ -53,7 +53,7 @@ Use these credentials to test the different permission levels in the Swagger UI:
 
 ---
 
-## 🛠️ Setup Instructions
+##  Setup Instructions
 
 ### Pre-requisites
 - Node.js (v18 or higher)
@@ -74,7 +74,7 @@ npm run start
 
 ---
 
-## 🛡️ Security & Production Features
+##  Security & Production Features
 - **RBAC Security**: Granular permissions enforced at the route level.
 - **JWT Authentication**: Secure login and session management.
 - **Validation**: Strict input schema validation using Zod.
@@ -83,7 +83,7 @@ npm run start
 
 ---
 
-## 📡 API Documentation
+##  API Documentation
 The API includes integrated OpenAPI/Swagger documentation.
 - **Link**: `/api-docs` on the running server.
 - **Spec**: `/api-docs.json` for external tools.
