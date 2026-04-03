@@ -29,7 +29,11 @@ export function errorHandler(
     }
 
     // Unexpected / programming errors
-    logger.error({ err: error, req: { method: req.method, url: req.url } }, 'Unhandled error');
+    logger.error({
+        err: error.message,
+        stack: error.stack,
+        req: { method: req.method, url: req.url }
+    }, 'Unhandled error');
 
     res.status(500).json({
         message: 'Internal Server Error',

@@ -4,7 +4,7 @@ import { z } from 'zod';
 dotenv.config();
 
 const envSchema = z.object({
-    NODE_ENV: z.enum(['development', 'production', 'test']).default(process.env.RENDER ? 'production' : 'development'),
+    NODE_ENV: z.enum(['development', 'production', 'test']).default((process.env.RENDER || process.env.NODE_ENV === 'production') ? 'production' : 'development'),
     PORT: z.string().default('3001').transform(Number),
     DATABASE_URL: z.string().min(1, 'DATABASE_URL is required'),
     JWT_SECRET: z.string().min(32, 'JWT_SECRET must be at least 32 characters'),
