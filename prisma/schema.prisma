@@ -1,0 +1,69 @@
+// ─── Prisma Schema ────────────────────────────────────────────
+// Finance Dashboard — PostgreSQL
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// ─── Enums ────────────────────────────────────────────────────
+
+enum Role {
+  VIEWER
+  ANALYST
+  ADMIN
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+}
+
+enum RecordType {
+  INCOME
+  EXPENSE
+}
+
+// ─── Models ───────────────────────────────────────────────────
+
+model User {
+  id        String     @id @default(cuid())
+  email     String     @unique
+  password  String
+  role      Role       @default(VIEWER)
+  status    UserStatus @default(ACTIVE)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  records FinancialRecord[]
+
+  @@map("users")
+}
+
+model FinancialRecord {
+  id        String     @id @default(cuid())
+  userId    String
+  amount    Decimal    @db.Decimal(15, 2)
+  type      RecordType
+  category  String
+  date      DateTime
+  notes     String?
+  deletedAt DateTime?
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // ── Indexes for query performance ──
+  @@index([userId])
+  @@index([date])
+  @@index([category])
+  @@index([type])
+  @@index([deletedAt])
+  @@map("financial_records")
+}
